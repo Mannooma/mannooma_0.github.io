@@ -117,10 +117,13 @@
                         /* Show mobile header and make it full-width/fixed */
                         .mobile-header { display: flex; }
                         /* Ensure the main nav buttons are not visible in mobile header area */
+                        .main-nav { display: none; }
+                        .mobile-nav { display: flex; }
           }
 
 /* Mobile header styles (hidden by default on desktop) */
 .mobile-header { display: none; }
+.mobile-menu-overlay { display: none; }
 .mobile-header .mobile-inner { display: flex; align-items: center; gap: 12px; width: 100%; }
 .mobile-logo { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; }
 .mobile-title { font-family: 'Press Start 2P', cursive; color: #ffffff; font-size: 14px; text-shadow: 2px 2px 0 #000; }
@@ -128,15 +131,76 @@
 @media (max-width: 768px) {
     .mobile-header {
         display: flex;
-        position: relative; /* no longer fixed: header scrolls with page */
+        position: relative; /* keep in normal flow so it scrolls away */
+        width: 100%;
         padding: 10px 14px;
         background: rgba(44,44,44,0.95);
         box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         align-items: center;
     }
+    #mobile-menu-button {
+        position: absolute;
+        right: 30px;
+        cursor: pointer;
+    }
 
     /* Slightly reduce the header-bar area to avoid double space (header-bar is hidden) */
     .header-bar { display: none; }
+
+    /* No body padding needed for a static header */
+
+    /* Mobile menu overlay styles */
+    .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0; /* top:0; right:0; bottom:0; left:0 */
+        background: rgba(0,0,0,0.55);
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    }
+
+    .mobile-menu-overlay.active { display: flex; }
+
+    .mobile-menu-inner {
+        width: 84%;
+        max-width: 300px;
+        background: rgba(44,44,44,0.98);
+        padding: 14px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        border: 2px solid rgba(255,255,255,0.12);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-nav { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+
+    /* Make mobile nav buttons slightly smaller and remove desktop min-width */
+    .mobile-nav .nav-button {
+        width: 100%;
+        min-width: 0;
+        padding: 12px 14px;
+        font-size: 12px;
+        border-radius: 8px;
+        background: #5e6063;
+        border: 2px solid rgba(255,255,255,0.08);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    .mobile-nav .nav-button:hover { background: #ff6200; }
+}
+
+.nav-button1.active, .nav-button1:focus {
+        outline: none;
+        border-color: rgba(255,255,255,0.9);
+        background: #e85900;
 }
 
       /* Only for pc */
