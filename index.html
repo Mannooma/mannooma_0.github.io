@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mannooma_0</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Minecraft Addons by Mannooma, Minecraft News and ALot">
+        <meta name="keywords" content="Mannooma, Minecraft, Addons, Mods, Maps, Skins, Texture Packs">
+        <meta name="author" content="Mannooma">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="png" href="Imgs/Mannooma.png">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+  
+    
+    <!-- Main Body -->
+     <body>
+            <header class="site-header">
+                <div class="header-bar">
+                    <div class="header-inner">
+                    <div class="logo-wrap">
+                        <img src="Imgs/Mannooma.png" alt="logo" class="logo">
+                    </div>
+                    <div class="title-wrap">
+                        <div id="reload" class="site-title">My Add-Ons</div>
+                        
+                    </div>
+                    <nav class="main-nav" aria-label="Main navigation">
+                        <button class="nav-button">MY-ADDONS</button>
+                        <button class="nav-button">SOCIAL</button>
+                        <button class="nav-button">NEWS</button>
+                        <button class="nav-button">OTHER ADDONS</button>
+                    </nav>
+                    </div>
+                </div>
+            </header>
+            <!-- Mobile header (only shown on small screens) -->
+            <header class="mobile-header" aria-hidden="false">
+                <div class="mobile-inner">
+                    <img src="Imgs/Mannooma.png" alt="logo" class="mobile-logo">
+                    <div class="mobile-title">My Add-Ons</div>
+                </div>
+            </header>
+            <br>
+
+
+            <!-- Post Content -->
+
+
+   <div class="page-content">
+       <section class="posts">
+           <article class="post" data-url="https://example.com/post-1">
+               <img class="post-image" src="Imgs/tp_points.png" alt="Post image">
+               <div class="post-header">
+                   <h2 class="post-title">Tp Points</h2>
+                   <span class="version">1.21</span>
+               </div>
+               <div class="rating">
+                   <div class="stars" role="radiogroup" aria-label="Rating">
+                       <button class="star" data-value="1" aria-label="1 star">☆</button>
+                       <button class="star" data-value="2" aria-label="2 stars">☆</button>
+                       <button class="star" data-value="3" aria-label="3 stars">☆</button>
+                       <button class="star" data-value="4" aria-label="4 stars">☆</button>
+                       <button class="star" data-value="5" aria-label="5 stars">☆</button>
+                   </div>
+                   <div class="rate-text">Rate this!</div>
+               </div>
+               <p class="post-excerpt">set points and instantly teleport across your world.</p>
+           </article>
+
+           <article class="post" data-url="https://example.com/post-2">
+               <img class="post-image" src="Imgs/upranks.jpg" alt="Post image">
+               <div class="post-header">
+                   <h2 class="post-title">UpRanks+</h2>
+                   <span class="version">1.21</span>
+               </div>
+               <div class="rating">
+                   <div class="stars" role="radiogroup" aria-label="Rating">
+                       <button class="star" data-value="1" aria-label="1 star">☆</button>
+                       <button class="star" data-value="2" aria-label="2 stars">☆</button>
+                       <button class="star" data-value="3" aria-label="3 stars">☆</button>
+                       <button class="star" data-value="4" aria-label="4 stars">☆</button>
+                       <button class="star" data-value="5" aria-label="5 stars">☆</button>
+                   </div>
+                   <div class="rate-text">Rate this!</div>
+               </div>
+               <p class="post-excerpt">Set ranks easily for your players also (you can change their names)</p>
+           </article>
+
+           <article class="post" data-url="https://example.com/post-3">
+               <img class="post-image" src="Imgs/health_bar.png" alt="Post image">
+               <div class="post-header">
+                   <h2 class="post-title">Health Bar</h2>
+                   <span class="version">1.21</span>
+               </div>
+               <div class="rating">
+                   <div class="stars" role="radiogroup" aria-label="Rating">
+                       <button class="star" data-value="1" aria-label="1 star">☆</button>
+                       <button class="star" data-value="2" aria-label="2 stars">☆</button>
+                       <button class="star" data-value="3" aria-label="3 stars">☆</button>
+                       <button class="star" data-value="4" aria-label="4 stars">☆</button>
+                       <button class="star" data-value="5" aria-label="5 stars">☆</button>
+                   </div>
+                   <div class="rate-text">Rate this!</div>
+               </div>
+               <p class="post-excerpt">Displays a customizable health bar above players and mobs.</p>
+           </article>
+       </section>
+   </div>
+            <footer class="site-footer">
+                <div class="footer-bar">
+                    <div class="footer-text">© 2025 Mannooma_0. All rights reserved.</div>
+                    <div class="footer-links"><a href="legal/terms-of-use.html" class="footer-link">Terms</a> <span class="sep">|</span> <a href="legal/privacy-policy.html" class="footer-link">Privacy</a></div>
+                </div>
+            </footer>
+    </body>
+
+
+    <!-- Js section -->
+        <script>
+             // Reload when title clicked
+             const reloadTextElement = document.getElementById('reload');
+             reloadTextElement.addEventListener('click', function() {
+                location.reload();
+        });
+
+        // Navigation button behavior:
+        // - Make the first nav button (MY-ADDONS) active on load
+        // - Clicking the already-active button does nothing (prevents unpressing)
+        // - Clicking another button switches the active state
+        (function() {
+            const navButtons = document.querySelectorAll('.main-nav .nav-button');
+            if (!navButtons || navButtons.length === 0) return;
+
+            // Default to the first button (MY-ADDONS)
+            const defaultBtn = navButtons[0];
+            defaultBtn.classList.add('active');
+
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // If the clicked button is already active, do nothing (can't unpress)
+                    if (btn.classList.contains('active')) return;
+
+                    // Remove active from previous and set on clicked
+                    const prev = document.querySelector('.main-nav .nav-button.active');
+                    if (prev) prev.classList.remove('active');
+                    btn.classList.add('active');
+                });
+            });
+        })();
+
+        // Post behavior: open URL when title is clicked and hide icons for that post
+        (function() {
+            const posts = document.querySelectorAll('.post');
+            posts.forEach(post => {
+                const title = post.querySelector('.post-title');
+                const icons = post.querySelectorAll('.post-actions .icon-btn');
+                const url = post.dataset.url;
+
+                if (!title) return;
+                title.style.cursor = 'pointer';
+
+                title.addEventListener('click', (e) => {
+                    // Hide the icons for this post
+                    icons.forEach(ic => ic.style.display = 'none');
+
+                    // Open the URL in a new tab/window if present
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        })();
+
+        // Interactive star rating behavior
+        (function() {
+            const starGroups = document.querySelectorAll('.stars');
+            starGroups.forEach(group => {
+                const stars = Array.from(group.querySelectorAll('.star'));
+                let currentRating = 0;
+
+                function fill(n) {
+                    stars.forEach(s => {
+                        const v = parseInt(s.dataset.value, 10);
+                        if (v <= n) s.classList.add('filled'), s.textContent = '★'; else s.classList.remove('filled'), s.textContent = '☆';
+                    });
+                }
+
+                stars.forEach(star => {
+                    const val = parseInt(star.dataset.value, 10);
+                    star.addEventListener('mouseover', () => fill(val));
+                    star.addEventListener('focus', () => fill(val));
+                    star.addEventListener('mouseout', () => fill(currentRating));
+                    star.addEventListener('blur', () => fill(currentRating));
+                    star.addEventListener('click', () => {
+                        currentRating = val;
+                        // store on containing post (not persistent across reloads)
+                        const post = group.closest('.post');
+                        if (post) post.dataset.rating = currentRating;
+                        fill(currentRating);
+                    });
+                });
+
+                // initialize display
+                fill(currentRating);
+            });
+        })();
+        </script>
+</html>
