@@ -3,12 +3,13 @@
     <head>
         <title>Mannooma10k</title>
         <meta charset="UTF-8">
-        <meta name="description" content="Addons, Resource Packs, and the newest Minecraft updates — all in one place.">
+        <meta name="description" content="Minecraft Addons, Rescourse Packs, Minecraft News and ALot">
         <meta name="keywords" content="Mannooma, Minecraft, Addons, Mods, Maps, Skins, Texture Packs">
         <meta name="author" content="Mannooma">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="png" href="Mannooma.png">
         <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/b8eda85835.js" crossorigin="anonymous"></script>
     </head>
 
   
@@ -39,8 +40,20 @@
                 <div class="mobile-inner">
                     <img src="Imgs/Mannooma.png" alt="logo" class="mobile-logo">
                     <div class="mobile-title">My Add-Ons</div>
+                    <i class="fa-solid fa-bars fa-2xl" id="mobile-menu-button" style="color: #ff8800;"></i>
                 </div>
             </header>
+            <!-- Mobile menu overlay (hidden by default) -->
+            <div id="mobile-menu" class="mobile-menu-overlay" aria-hidden="true">
+                <div class="mobile-menu-inner" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+                    <nav class="mobile-nav">
+                        <button class="nav-button">MY-ADDONS</button>
+                        <button class="nav-button">SOCIAL</button>
+                        <button class="nav-button">NEWS</button>
+                        <button class="nav-button">OTHER ADDONS</button>
+                    </nav>
+                </div>
+            </div>
             <br>
 
 
@@ -49,7 +62,7 @@
 
    <div class="page-content">
        <section class="posts">
-           <article class="post" data-url="https://example.com/post-1">
+           <article class="post" data-url="posts/tp_points.html">
                <img class="post-image" src="Imgs/tp_points.png" alt="Post image">
                <div class="post-header">
                    <h2 class="post-title">Tp Points</h2>
@@ -172,17 +185,35 @@
             });
         })();
 
-        // Interactive star rating behavior
+        // Interactive star rating behavior with persistence
         (function() {
             const starGroups = document.querySelectorAll('.stars');
-            starGroups.forEach(group => {
+            starGroups.forEach((group, idx) => {
                 const stars = Array.from(group.querySelectorAll('.star'));
+                const post = group.closest('.post');
+                // Use post URL if available to make storage key unique, otherwise fallback to index
+                const storageKey = post && post.dataset.url ? 'rating:' + post.dataset.url : 'rating:post:' + idx;
+                // load saved rating (if any)
                 let currentRating = 0;
+                try {
+                    const saved = localStorage.getItem(storageKey);
+                    if (saved !== null) currentRating = parseInt(saved, 10) || 0;
+                } catch (e) {
+                    // localStorage may be unavailable in some contexts; ignore silently
+                }
 
                 function fill(n) {
                     stars.forEach(s => {
                         const v = parseInt(s.dataset.value, 10);
-                        if (v <= n) s.classList.add('filled'), s.textContent = '★'; else s.classList.remove('filled'), s.textContent = '☆';
+                        if (v <= n) {
+                            s.classList.add('filled');
+                            s.textContent = '★';
+                            s.setAttribute('aria-pressed', 'true');
+                        } else {
+                            s.classList.remove('filled');
+                            s.textContent = '☆';
+                            s.setAttribute('aria-pressed', 'false');
+                        }
                     });
                 }
 
@@ -194,20 +225,63 @@
                     star.addEventListener('blur', () => fill(currentRating));
                     star.addEventListener('click', () => {
                         currentRating = val;
-                        // store on containing post (not persistent across reloads)
-                        const post = group.closest('.post');
+                        // store on containing post element as well
                         if (post) post.dataset.rating = currentRating;
+                        try {
+                            localStorage.setItem(storageKey, String(currentRating));
+                        } catch (e) {
+                            // ignore storage errors
+                        }
                         fill(currentRating);
                     });
                 });
 
-                // initialize display
+                // initialize display with saved rating
                 fill(currentRating);
             });
+        })();
+
+        // Mobile menu toggle behavior
+        (function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!menuButton || !mobileMenu) return;
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                // move focus to first button for accessibility
+                const first = mobileMenu.querySelector('.mobile-nav .nav-button');
+                if (first) first.focus();
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                menuButton.focus();
+            }
+
+            menuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('active')) closeMenu(); else openMenu();
+            });
+
+            // Close when clicking the overlay background (but not the inner dialog)
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) closeMenu();
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenu();
+            });
+
+            // Close when selecting a mobile nav button
+            const mobileNavButtons = mobileMenu.querySelectorAll('.mobile-nav .nav-button');
+            mobileNavButtons.forEach(btn => btn.addEventListener('click', () => closeMenu()));
         })();
         </script>
 
 </html>
-
 
 
