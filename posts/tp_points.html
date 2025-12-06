@@ -19,6 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <style>body { background-color: #000000;background-position: -5px -5px;
                  min-height: 100vh;
                  line-height: 1.5;
+                 text-shadow: #000 1px 1px 1px;
 }
 
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -116,6 +117,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     border-radius: 1px; /* Rounded corners */
     line-height: 1.6;
+    text-shadow: #000 2px 2px 1px;
         }
         #tdi {
             display: block;
@@ -139,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         .bobo {
     max-width: 500px; /* Set a fixed width */
-    max-height: 2000px; /* Set a fixed height */
+    max-height: 1000px; /* Set a fixed height */
     background-color: #252525; /* Light gray background */
     border: 2px solid #4a4a4a; /* Dark gray border */
     padding: 20px; /* Space between content and border */
@@ -147,6 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     border-radius: 1px; /* Rounded corners */
     line-height: 1.6;
+    text-shadow: #000 2px 2px 1px;
         }
     #tdb:hover {
     transform: translateY(-4px); box-shadow: -3px 3px 1px #0384fc; }
@@ -200,6 +203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 18px auto; /* Center the box horizontally and add space around it */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     border-radius: 1px; /* Rounded corners */
+    line-height: 1.6;
         }
 
 #tdu {
@@ -211,6 +215,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         text-shadow: 1px 1px 1px #000;
     }
 
+    #tss {
+        line-height: 1.6;
+        background: #2f2f2f;
+        padding: 12px 18px;
+        box-shadow: -3px 0px 0px #0bfc03;
+        transition: transform .12s ease, background .12s ease;
+    }
+    #tsx {
+        line-height: 1.6;
+        background: #2f2f2f;
+        padding: 12px 18px;
+        box-shadow: -3px 0px 0px #fc0303;
+        transition: transform .12s ease, background .12s ease;
+    }
 @media (min-width: 769px) {
     
     #vid {
@@ -238,8 +256,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         font-size: 8px;
     }
     
-}
+    #imggsstar {
+     border: 2px solid;
+     border-color: black;
+     box-shadow: #000 2px 2px 1px;
+    }
 
+   
+}
+.fgnox { max-width: 500px; /* Set a fixed width */
+    max-height: 1000px; /* Set a fixed height */
+    background-color: #252525; /* Light gray background */
+    border: 2px solid #4a4a4a; /* Dark gray border */
+    padding: 20px; /* Space between content and border */
+    margin: 18px auto; /* Center the box horizontally and add space around it */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    border-radius: 1px; /* Rounded corners */
+    line-height: 1.6;
+    text-shadow: #000 2px 2px 1px;}
     </style>
 </head>
 <body>
@@ -288,19 +322,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p id="tdu" style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem; background-color: #0087d055;">
         Create Points Item
     </p>
-
-
-
-
-
-
-
-
-
-
-
+    <img id="imgscrafting" src="../Imgs/posts/crafting.png" alt="" height="170" width="400" style="border: #4a4a4a 2px solid;justify-content: center;">
+    <p style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem;">
+        To craft Points item you will need 2x block of dirts, 1x wooden stick
+    </p>
+     <p id="tdu" style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem; background-color: #0087d055;">
+        Create Point
+    </p>
+    <img id="imgsstar" src="../Imgs/posts/star.jpg" alt="" height="270" width="500" style="border: #4a4a4a 2px solid;">
+    <p style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem;">
+        Right Click to Open the Tp Points Menu
+    </p>
+    <img id="imgstype" src="../Imgs/posts/type.jpg" alt="" height="270" width="500" style="border: #4a4a4a 2px solid;">
+    <p style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem;">
+        Select the slot and type a name for your teleport point, then click "Submit"
+    </p>
+    <img id="imgscreate" src="../Imgs/posts/create.jpg" alt="" height="270" width="500" style="border: #4a4a4a 2px solid;">
+    <p style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem;">
+        After customizing your point, click "Create Point" to save it.
+    </p>
+    <img id="imgsfinish" src="../Imgs/posts/finish.jpg" alt="" height="270" width="500" style="border: #4a4a4a 2px solid;">
+    <p style="text-align : left; color: #fefefe; font-size: 11px;  margin-bottom: 1rem;">
+        After that the name of your point & coordinates will be shown on block you selected.
+    </p>
  </div>
 
+ <div class="fgnox">
+   <h1 id="tds">Compatibility</h1>
+  <p id="tss" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+         MINECRAFT 1.21.0+ <br>
+     </p>
+        <p id="tss" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+            -LOCAL MULTIPLAYER  <br>
+            </p>
+        <p id="tss" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+            -MULTIPLAYER REALMS <br>    
+            </p>
+        <p id="tss" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+             SURVIVAL MODE <br>    
+            </p>
+            <p id="tss" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+                CREATIVE MODE <br>
+            </p>
+            <p id="tsx" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+                JAVA EDITION <br>
+            </p>
+            <p id="tsx" style="text-align : left; color: #ccc; font-size: 11px;  margin-bottom: 1rem; ">
+                BELOW 1.21.0 <br>
+            </p>
+ </div>
 
 
 
