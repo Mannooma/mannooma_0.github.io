@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MCJRDZ23');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17785284813"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17785284813');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft 1.21.11 Release Candidate 3 is HERE!</title>
+    <meta name="description" content="Mojang just dropped Release Candidate 3 for 1.21.11, and guess what? They're squashing three huge bugs! Get the details on what's fixed!">
+    <meta name="keywords" content="Mannooma, Minecraft, News, 1.21.11, Release Candidate 3, Java Edition, Bug Fixes, MC-304790, MC-304797, MC-304810">
+    <meta name="author" content="Mannooma">
+    <link rel="icon" href="Mannooma.png" type="png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #000000;
+            background-position: -5px -5px;
+            min-height: 100vh;
+            line-height: 1.8;
+            text-shadow: #000 1px 1px 1px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('truetype');
+        }
+
+        :root {
+            --mc-green: #55FF55;
+            --mc-dark: #2D2D2D;
+            --mc-border: #3100e0;
+            --mc-blue: #03adfc;
+            --mc-blue1: #0384fc;
+        }
+
+        a:link, a:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        .star-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-image:
+                radial-gradient(2px 2px at 15% 25%, white, transparent),
+                radial-gradient(2px 2px at 70% 40%, white, transparent),
+                radial-gradient(2px 2px at 30% 75%, white, transparent),
+                radial-gradient(2px 2px at 85% 60%, white, transparent);
+            background-size: 350px 350px;
+            animation: moveStars 14s linear infinite;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 0 700px;
+            }
+        }
+
+
+
+        .header {
+            padding: 2rem 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #4a4a4a;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tp {
+            font-size: 9px;
+            color: #aaa;
+            margin-bottom: 15px;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .tp a {
+            color: var(--mc-green);
+            text-decoration: none;
+        }
+
+        .header img {
+            max-width: 600px;
+            width: 90%;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 8px var(--mc-green));
+            margin-bottom: 15px;
+        }
+
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        /* hover for page heading */
+        #h1 {
+            color: var(--mc-green);
+        }
+
+        .fsbox {
+            max-width: 800px;
+            background-color: #171614;
+            border: 2px solid #252422;
+            padding: 20px;
+            margin: 18px auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 1px;
+            line-height: 1.8;
+            text-align: left;
+            text-shadow: #000 1px 1px 1px;
+            color: #fefefe;
+            font-size: 13px;
+        }
+
+        #tds {
+            text-align: center;
+            color: var(--mc-green);
+            margin-bottom: 20px;
+            background: #2f2f2f;
+            padding: 12px 18px;
+            text-shadow: 1px 2px 1px #000;
+            box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.6), inset 0 -2px 0 rgba(255, 255, 255, 0.02);
+            border: 3px solid rgb(71, 71, 71);
+            line-height: 1.6;
+        }
+
+        /* Styling for the table image */
+        #version-table-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #4a4a4a;
+            image-rendering: pixelated;
+        }
+
+        /* Style for the author/date information */
+        .article-meta {
+            text-align: center;
+            color: #aaa;
+            font-size: 10px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            line-height: 1.5;
+        }
+        
+        .article-meta strong {
+            color: #fff;
+            font-weight: normal;
+        }
+
+        /* Style for main article headings (to break up sections) */
+        .article-sub-heading {
+            color: var(--mc-green);
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px solid #4a4a4a;
+            padding-bottom: 5px;
+        }
+
+        @media (min-width: 769px) {
+            .fsbox {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #h1 {
+                font-size: 14px
+            }
+
+            #tds {
+                font-size: 12px;
+            }
+
+            .fsbox {
+                font-size: 11px;
+                width: 96%;
+            }
+            .article-sub-heading {
+                font-size: 14px;
+            }
+        }
+
+
+        .site-footer {
+            width: 100%;
+            padding: 26px 0 36px 0;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 -6px 12px rgba(27, 27, 27, 0.4);
+            margin-top: auto;
+            border-top: 3px solid;
+            border-block-color: #4a4a4a;
+        }
+
+
+
+        .footer-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 6px 20px;
+        }
+
+
+
+        .footer-text {
+            color: #ffffff;
+            font-size: 12px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+
+
+        .footer-links {
+            margin-top: 8px
+        }
+
+
+
+        .footer-link {
+            color: #21bdf6;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+
+
+
+        .footer-link:hover {
+            color: #00bbff;
+            text-decoration: underline
+        }
+  
+  #po {
+    color: #00bbff;
+            text-decoration: underline
+  }
+  #pw {
+    color: #00bbff;
+            text-decoration: underline
+  }
+  
+    </style>
+
+</head>
+
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCJRDZ23"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="star-bg"></div>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2P94THH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+    <header class="header">
+        <div class="tp">
+            <a href="../index.html">HOME</a> &gt; <a href="#">NEWS</a> &gt; RELEASE CANDIDATE
+        </div>
+        <h1 id="h1">MINECRAFT 1.21.11 RELEASE CANDIDATE 3 DROPS!</h1>
+        <p style="color: #888; font-size: 10px;">Three critical fixes for Java Edition are here. Get ready to mine!</p>
+        <div class="article-meta">
+            Written By: <strong>Mannooma</strong> &nbsp;| &nbsp; Published: <strong>12/9/25</strong>
+        </div>
+    </header>
+
+
+
+    <div class="fsbox">
+        <p>
+            Hello, Minecrafters! The developers at Mojang just shipped **Release Candidate 3 for 1.21.11**! Yes, you heard that right—another candidate version is out, and it's addressing three crucial issues that cropped up right after the last update. This is a big deal for Java Edition players!
+        </p>
+      <br>
+        <p>
+            It looks like the team is pushing hard for stability before the full launch. This Release Candidate focuses purely on bug squashing, ensuring our experience is smooth and polished. Ready to see what made the cut? Let's dive into the patch notes!
+        </p>
+      <br>
+        <p class="article-sub-heading" style="color: #aaa;margin-top: 25px;font-size: 10px">This update is a Release Candidate for Minecraft: Java Edition. It's available now in your launcher, but remember to back up your worlds!</p>
+
+
+        <h2 class="article-sub-heading">Three Key Bugs Smashed in RC 3!</h2>
+
+        <p>
+            The official notes confirm three critical fixes that have been addressed in this new Release Candidate. <br> It’s exciting to see these issues resolved so quickly!
+        </p>
+        <p>
+            Here are the issues we can finally say goodbye to in 1.21.11 Release Candidate 3:
+        </p>
+
+        <h2 class="article-sub-heading">Fixed Bugs List:</h2>
+
+        <ul>
+            <li>[MC-304790]: Transparent item models are rendered incorrectly. *Say goodbye to weird-looking blocks!*</li>
+          <br>
+             <li>[MC-304797]: Zombie nautiluses generated in ocean ruins are not persistent. *Now your spooky ocean friends will actually stick around.*</li>
+          <br>
+            <li>[MC-304810]: Zombies, skeletons and zombie horses can catch fire from light sources when exposed to the sky in an arid biome. *That was a strange one—mobs in arid biomes can chill out now.*</li>
+        </ul>
+
+        <h2 class="article-sub-heading">How to Get the Release Candidate NOW!</h2>
+
+        <p>
+            If you're eager to try out these fixes (and I know you are!), <br> the Release Candidate is available for **Minecraft: Java Edition**.
+        </p>
+
+        <p id="tds">
+          <strong>To Install:</strong> Head over to the Minecraft Launcher and make sure you enable "snapshots" in the **"Installations"** tab!
+        </p>
+
+        <p style="text-align: center; color: #ff5555; font-style: italic; margin-top: 25px; margin-bottom: 25px;">
+            **IMPORTANT NOTE:** Testing versions like this can corrupt your world! Please, please, remember to back up your save files or run this in a separate folder from your main worlds. Safety first!
+        </p>
+
+        <h2 class="article-sub-heading">Server Owners, Listen Up!</h2>
+
+        <p>
+            For those running cross-platform servers, the new server jar is ready for download! Plus, as Mojang gets ready to remove obfuscation from Java Edition (big news for modders!),<br> they’ve also provided an unobfuscated experimental version of this snapshot.
+        </p>
+        <p>
+            <ul>
+                <li><strong>Cross-platform server jar:</strong> [Minecraft server jar link]</li>
+                <li><strong>Unobfuscated server jar:</strong> [Unobfuscated server jar link]</li>
+            </ul>
+        </p>
+
+        <h2 class="article-sub-heading">Want to Report a Bug or Give Feedback?</h2>
+
+        <p>
+            The team needs your eyes on this! If you find any new issues, or just want to tell them how great the fixes are, here’s where to go:
+        </p>
+        <ul>
+            <li>Report Bugs Here: <a id="po" href="https://bugs.mojang.com/projects/MC/issues/">Minecraft issue tracker!</a></li>
+            <li><strong>Give Feedback:</strong> Head over to the <a id="pw" href="https://feedback.minecraft.net/hc/en-us">Feedback site</a> or join the official <a href="https://discord.gg/minecraft">Minecraft Discord</a>.</li>
+        </ul>
+        <p>
+            That's all for now, folks! Happy mining! Let's hope this is the final step before the official 1.21.11 release!
+        </p>
+
+    </div>
+
+
+
+    <footer class="site-footer">
+
+        <div class="footer-bar">
+
+            <div class="footer-text">© 2025 Mannooma10k. All rights reserved.<br>This site is not affiliated with Mojang Studios</div>
+
+            <div class="footer-links"><a href="../legal/terms-of-use.html" class="footer-link">Terms</a> <span class="sep">|</span> <a href="../legal/privacy-policy.html" class="footer-link">Privacy</a></div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
