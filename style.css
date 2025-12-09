@@ -234,10 +234,11 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
 
      
-      .button-changer {
-    position: fixed;        /* stays while scrolling */
-    top: 600px;              /* distance from the top */
-    right: 20px;            /* distance from the right */
+            .button-changer {
+        position: fixed;        /* stays while scrolling */
+        bottom: 20px;           /* distance from the bottom (visible on desktop) */
+        top: auto;
+        right: 20px;            /* distance from the right */
     z-index: 9999;          /* stays above everything */
     background-color: #2f2f2f;
     border: 2px solid #4a4a4a;
@@ -286,14 +287,47 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
     transform: translateY(-4px); box-shadow: 0 5px 2px rgba(0, 0, 0, 0.6); }
 
   
+ /* --- Mobile Menu Close Button (NEW) --- */
+.mobile-menu-inner {
+    position: relative; /* Essential for positioning the close button absolutely within the menu */
+}
 
+.social-close {
+    position: absolute;
+    top: 14px; /* Align with top padding */
+    right: 14px; /* Align with right padding */
+    background: #4a4a4a; /* Darker background to make it stand out */
+    border: 2px solid #2f2f2f;
+    color: #ffffff;
+    padding: 6px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller size for close icon */
+    line-height: 1;
+    z-index: 100000;
+    transition: background .15s ease, border-color .15s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.light-mode .social-close:hover {
+    background: #ff6200; /* Use your main accent color for hover */
+    border-color: #ff4d00;
+}
+
+/* Light mode hover adjustment (if needed, based on your color logic) */
+.social-close:hover {
+    background: #09b820; /* Use your light mode active color for hover/close */
+    border-color: #09b820;
+}
 
           @media (max-width: 768px) {
 
                         .header-bar { display: none; }
 
                         /* Show mobile header and make it full-width/fixed */
-
+ 
+                                                /* mobile close button should be visible inside the mobile menu overlay */
+                                                /* (removed the rule that hid it) */
                         .mobile-header { display: flex; }
 
                         /* Ensure the main nav buttons are not visible in mobile header area */
@@ -338,6 +372,7 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
         align-items: center;
 
+        z-index: 11001; /* keep mobile header above page content so the button is clickable */
     }
 
     /* Avoid fixed background quirks on mobile that can create visual gaps */
@@ -410,6 +445,39 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
     }
 
+    /* Square close button positioned above the mobile menu */
+    .mobile-menu-inner .close-menu-btn {
+        position: absolute;
+        /* lift the button above the menu box so it appears 'above' */
+        top: -22px;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+        background: #4a4a4a;
+        border: 2px solid #2f2f2f;
+        color: #fff;
+        padding: 0;
+        border-radius: 6px; /* slight rounding while keeping square footprint */
+        font-size: 16px;
+        line-height: 1;
+        z-index: 10002;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+        pointer-events: auto;
+    }
+
+    .mobile-menu-inner .close-menu-btn i { font-size: 18px; }
+    .mobile-menu-inner .close-menu-btn:hover { background: #ff6200; border-color: #000000; transform: translateY(-2px); }
+    .ddr .close-menu-btn:hover { background: #26ff00; border-color: #ffffff; transform: translateY(-2px); }
+
+    /* Slight adjustment for very small screens */
+    @media (max-width: 480px) {
+        .mobile-menu-inner .close-menu-btn { top: -20px; right: 8px; width: 40px; height: 40px; }
+    }
+
 
 
     .mobile-nav { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
@@ -454,7 +522,7 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
 .ddc .mobile-nav .nav-button:hover { background: #ff6200; }
 
-}
+
 
 
 
@@ -495,26 +563,29 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
     /* active nav state */
 
-   .nav-button.active, .nav-button:focus {
+    /* Active nav state: green in dark mode, orange in light mode */
+
+    body:not(.light-mode) .nav-button.active,
+    body:not(.light-mode) .nav-button:focus {
 
         outline: none;
 
         border-color: rgba(255,255,255,0.9);
 
-        background: #09b820;
+        background: #09b820; /* dark-mode active */
 
-}
+    }
 
-
-.ddb1 .nav-button.active, .nav-button:focus {
+    .light-mode .nav-button.active,
+    .light-mode .nav-button:focus {
 
         outline: none;
 
         border-color: rgba(255,255,255,0.9);
 
-        background: #ff4d00;
+        background: #ff4d00; /* light-mode active */
 
-}
+    }
 
 
 
@@ -528,7 +599,7 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 
     padding: 16px;
 
-    border-radius: 12px;
+    border-radius: 8px;
 
     text-align: left;
 
@@ -607,6 +678,140 @@ img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 .rate-text { color: #bdbdbd; font-size: 12px; background: rgba(255,255,255,0.02); padding: 6px 10px; border-radius: 6px; }
 
 .post-excerpt { font-size: 13px; color: #e6e6e6; margin-top: 8px; line-height: 1.3; }
+
+/* Social overlay (floating above posts) */
+.social-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: flex-start; /* start a bit down from top */
+    justify-content: center;
+    z-index: 12000;
+    pointer-events: none;
+}
+
+/* News posts (hidden by default) */
+.news-posts { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 12px; }
+
+/* Other addons section should match the posts grid sizing */
+.other-posts { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 12px; }
+
+/* Transition utilities used when switching views */
+.fade-transition { transition: opacity .28s ease, transform .28s ease; }
+.fade-out { opacity: 0; transform: translateY(8px); pointer-events: none; }
+.visible { display: grid; opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.social-overlay .social-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    transition: opacity 260ms ease;
+}
+
+.social-overlay .social-posts {
+    position: relative;
+    margin-top: 56px;
+    width: 95%;
+    max-width: 1100px;
+    background: rgba(47,47,47,0.98);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    transform: translateY(-8px) scale(0.98);
+    opacity: 0;
+    transition: opacity 300ms ease, transform 300ms ease;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    pointer-events: none;
+}
+
+/* Keep the social posts scrollable when overlay is open */
+.social-overlay .social-posts {
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure other-posts thumbnails are uniform and constrained */
+.other-posts .post-image {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    width: 100%;
+    max-height: 200px; /* limit height so cards stay compact */
+    border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+    .other-posts .post-image { max-height: 140px; }
+}
+
+/* Individual card entrance (staggered) */
+.social-overlay .social-posts .post {
+    transform: translateY(12px) scale(0.995);
+    opacity: 0;
+    transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 320ms cubic-bezier(.2,.9,.2,1);
+}
+
+.social-overlay.active .social-posts .post:nth-child(1) {
+    transition-delay: 40ms;
+}
+.social-overlay.active .social-posts .post:nth-child(2) {
+    transition-delay: 120ms;
+}
+.social-overlay.active .social-posts .post:nth-child(3) {
+    transition-delay: 200ms;
+}
+
+.social-overlay.active .social-posts .post {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Close button inside overlay */
+
+
+/* ensure close button is visible on small screens too */
+@media (max-width: 480px) {
+    .social-close { right: 8px; top: 8px; font-size: 20px; }
+}
+
+.social-overlay.active {
+    pointer-events: auto;
+}
+
+/* Hide the social close button when overlay is not active */
+.social-overlay .social-close { display: none; }
+.social-overlay.active .social-close { display: block; }
+
+/* Mobile menu toggle button styles (wrap the icon in a button for reliable clicks) */
+.mobile-menu-toggle { background: transparent; border: none; color: inherit; cursor: pointer; padding: 6px; display: inline-flex; align-items: center; }
+.mobile-menu-toggle:focus { outline: 2px solid rgba(255,255,255,0.12); }
+
+.social-overlay.active .social-backdrop {
+    opacity: 1;
+}
+
+.social-overlay.active .social-posts {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Utility class to prevent page scrolling when overlays are open */
+.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    position: relative;
+}
+
+/* When overlay open, dim underlying posts */
+.posts.dimmed {
+    filter: blur(2px) saturate(.9);
+    opacity: 0.6;
+    pointer-events: none;
+}
 
 
 
